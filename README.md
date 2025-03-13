@@ -19,7 +19,6 @@ and explore the commands they can use in their Linux environment.
 - [Installation](#installation)
 - [Uninstall](Uninstall)
 - [Usage](#usage)
-- [Makefile](#makefile)
 - [Customization](#customization)
 - [Contributing](#contributing)
 - [License](#license)
@@ -39,30 +38,18 @@ and explore the commands they can use in their Linux environment.
 
 ### Building from Source
 
-1. Clone the repository:
-
 ```
 git clone https://github.com/juanmilkah/commands.git
-```
-
-2. Navigate to the project directory:
-
-```
 cd commands
+bash build.sh
 ```
 
-3. Use the Makefile to build and install the project (see [Makefile](#makefile) section for more details):
-
-```
-make install
-```
-
-4. Follow the instructions provided after installation to update your PATH.
-
-## Uninstall
+## Uninstallation
+May require privilege escalation
 
 ```bash
-make uninstall
+rm -rf /usr/local/bin/commands 
+rm -rf ~/.commands
 ```
 
 ## Usage
@@ -75,67 +62,25 @@ To use the Commands tool:
 commands
 ```
 
-or
-
-```bash
-commands -l
-```
-
-or
-
-```bash
-commands --list
-```
-
 2. Search for a specific command:
 
 ```bash
-commands -s <search_term>
-```
-
-or
-
-```bash
-commands --search <search_term>
+commands search <search_term>
 ```
 
 3. Ignorecase
 
 ```bash
-commands -s <search_term> -i
+commands search <search_term> -i
 ```
 
-4. Draw Ascii Art
-
-```bash
-commands -a
-```
-
-5. Display help information:
-
-```bash
-commands -h
-```
-
-or
+4. Display help information:
 
 ```bash
 commands --help
 ```
 
-6. To show less commands
-
-```bash
-commands -l | less
-```
-
-7. Show the Version
-
-```bash
-commands -v
-```
-
-or
+5. Show the Version
 
 ```bash
 commands --version
@@ -151,27 +96,9 @@ Available Linux Commands:
 ...
 ```
 
-## Makefile
-
-The project includes a Makefile to simplify the build and installation process. Here are the available commands:
-
-- `make build`: Compiles the project
-- `make install`: Installs the project to ~/.commands and provides instructions for updating PATH
-- `make uninstall`: Uninstalls the project from ~/.commands
-- `make clean`: Removes build files
-- `make help`: Shows the help message with available commands
-
-To install the project, run:
-
-```
-make install
-```
-
-After installation, follow the instructions provided to add the installation directory to your PATH. You'll need to add a line to your shell configuration file (.bashrc, .bash_profile, or .zshrc) and then either source the file or restart your terminal for the changes to take effect.
-
 ## Customization
 
-You can easily add or modify commands by editing the `linux` file in the project root. Each line should follow this format:
+You can easily add or modify commands by editing the `linux` file in the `~/.commands` directory. Each line should follow this format:
 
 ```
 [command_name]  Command description
@@ -180,13 +107,6 @@ You can easily add or modify commands by editing the `linux` file in the project
 ## Contributing
 
 Contributions are welcome! If you have suggestions for improvements or new features, please follow these steps:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/AmazingFeature`)
-3. Make your changes
-4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-5. Push to the branch (`git push origin feature/AmazingFeature`)
-6. Open a Pull Request
 
 ## License
 
